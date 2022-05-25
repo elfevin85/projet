@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<header th:replace="/pages/fragments/header.html::header"></header>
+<h1 class="titre">Voici nos coachs!</h1>
+
+
+<div class="row">
+    <div class="column">
+        <img th:src="@{/css/image/kevin.jpg}"style="width:400px" height="250px"/><br>
+        <p style="margin-left: 125px">Kevin Diotte-Therrien</p>
+    </div>
+    <div class="column">
+        <img th:src="@{/css/image/rock.jpg}" style="width:400px" height="250px"/>
+        <p style="margin-left: 115px">Dwayne "The Rock" Johnson</p>
+    </div>
+    <div class="column">
+        <img th:src="@{/css/image/arnold.jpg}" style="width:400px" height="250px"/>
+        <p style="margin-left: 125px">Arnold schwarzenegger</p>
+    </div>
+</div>
+
+<table style="border: 1px solid;" class="center">
+    <thead>
+    <th>Coach</th>
+    <th>Description</th>
+    </thead>
+    <tbody>
+    <tr th:each="coach : ${coachs}">
+        <td th:text="${coach.getPrenom() + '  '+ coach.getNom()}">prenom</td>
+        <td th:text="${coach.getDescription()}">Description</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+
+<style>
+    p{
+        color: green;
+    }
+
+    table, th, td{
+        border: 1px solid;
+        padding: 1px;
+        animation: cubic-bezier(1,2,3,4);
+        font-family: "Comic Sans MS", serif;
+        font-size: 20px;
+        color: darkred;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .column {
+        flex: 33.33%;
+        padding: 5px;
+    }
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    h1 {text-align: center;}
+</style>

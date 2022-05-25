@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<header th:replace="/pages/fragments/header.html::header"></header><br>
+<h1 class="titre">Voici les exercices!</h1>
+<div class="btn-group" style="justify-content: space-between" >
+    <p class="txt">Trier les exercices par muscle:</p>
+    <button type="button" th:onclick="|window.location.href='/exercice/Reset'|">All</button>
+    <button type="button" th:onclick="|window.location.href='/exercice/sortByJambe'|">Jambes</button>
+    <button type="button" th:onclick="|window.location.href='/exercice/sortByChest'|">Chest</button>
+    <button type="button" th:onclick="|window.location.href='/exercice/sortByEpaule'|">Epaule</button>
+    <button type="button" th:onclick="|window.location.href='/exercice/sortByDos'|">Dos</button>
+
+</div>
+
+
+<table style="border: 1px solid;" class="center">
+    <thead>
+    <th>Nom</th>
+    <th>Muscle</th>
+    <th>Equipement</th>
+    <th>Description</th>
+    <th>Difficulte</th>
+    </thead>
+    <tbody>
+    <tr th:each="exo : ${exercices}">
+        <td th:text="${exo.getNom()}">Nom</td>
+        <td th:text="${exo.getMuscle()}">Muscle</td>
+        <td th:text="${exo.getTypeEquipement()}">Equipement</td>
+        <td th:text="${exo.getDescription()}">Description</td>
+        <td th:text="${exo.getDifficulte()}">Difficulte</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+
+<style>
+    p{
+        color: green;
+    }
+
+    table, th, td{
+        border: 1px solid;
+        padding: 1px;
+        animation: cubic-bezier(1,2,3,4);
+        font-family: "Comic Sans MS", serif;
+        font-size: 20px;
+        color: black;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .column {
+        flex: 33.33%;
+        padding: 5px;
+    }
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+        width: 97%;
+    }
+    h1 {text-align: center;}
+    .btn-group button {
+        background-color: red; /* Green background */
+        border: 1px solid green; /* Green border */
+        color: white; /* White text */
+       font-size: 100%;
+        cursor: pointer; /* Pointer/hand icon */
+        float: left; /* Float the buttons side by side */
+        margin-right: 3%;
+        margin-top: 1.5%;
+        width: 5%;
+
+    }
+
+    /* Clear floats (clearfix hack) */
+    .btn-group:after {
+        content: "";
+        clear: both;
+        display: table;
+
+    }
+
+    .btn-group button:not(:last-child) {
+
+        border-right: none; /* Prevent double borders */
+    }
+    .txt{
+        font-size: 125%;
+        color: red; /* White text */
+        float: left; /* Float the buttons side by side */
+        margin-right: 3%;
+    }
+
+</style>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vous pouvez modifier vos Informations personnelles</title>
+</head>
+<body>
+<h1>Vous pouvez modifier vos Informations personnelles</h1>
+<form action="#" th:action="@{/inscription/edituser}"
+      th:object="${user}" method="post">
+    <table>
+        <tr>
+            <td>
+                <label>Prenom: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{prenom}"
+                       th:value="${user.prenom}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Nom: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{nom}"
+                       th:value="${user.nom}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>UserName: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{username}"
+                       th:value="${user.username}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>email: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{email}"
+                       th:value="${user.email}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Password: </label>
+            </td>
+            <td>
+                <input type="password" th:field="*{password}"
+                       th:value="${user.password}"/>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <table>
+        <tr>
+            <td>
+                <input type="submit" value="Enregistrer"
+                       name="Enregistrer"/>
+            </td>
+            <td>
+                <input type="reset" value="Annuler" name="reset"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

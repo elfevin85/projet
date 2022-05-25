@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<header th:replace="/pages/fragments/header.html::header"></header>
+<h1 class="titre">Liste des elements que vous pouvez inclure dans votre diete</h1>
+
+<form th:action="@{/nutrition/executeSearch}" th:object="${search}" method="get">
+    <div class="input-group w-50">
+        <input type="text" th:field="*{query}" class="form-control" placeholder="Nom du produit"/>
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+        </div>
+    </div>
+</form>
+
+
+
+<table style="border: 1px solid;" class="center">
+    <thead>
+    <th>Aliment</th>
+    <th>Nombre de calorie(100g)</th>
+    <th>Proteine(g)</th>
+    <th>Glucide(g)</th>
+    <th>Lipide(g)</th>
+    <th>Categorie</th>
+    <th>Niveau de sante</th>
+    </thead>
+    <tbody>
+    <tr th:each="aliment : ${aliments}">
+        <td th:text="${aliment.produit}"    >Aliment</td>
+        <td th:text="${aliment.nbCalorie}">Nombre de calorie(100g)</td>
+        <td th:text="${aliment.proteine}">Proteine(g)</td>
+        <td th:text="${aliment.glucide}">Glucide(g)</td>
+        <td th:text="${aliment.lipide}">Lipide(g)</td>
+        <td th:text="${aliment.categorie}">Categorie</td>
+        <td th:text="${aliment.niveauDeSante}">Niveau de sante</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+
+<style>
+    p{
+        color: green;
+    }
+
+    table, th, td{
+        border: 1px solid;
+        padding: 1px;
+        animation: cubic-bezier(1,2,3,4);
+        font-family: "Comic Sans MS", serif;
+        font-size: 20px;
+        color: darkred;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .column {
+        flex: 33.33%;
+        padding: 5px;
+    }
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h1 {text-align: center;}
+</style>
